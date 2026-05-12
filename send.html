@@ -1,0 +1,47 @@
+
+<html>
+<head>
+    <title>Send</title>
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="js/send.js"></script>
+</head>
+<body>
+    <h1>Email Chart</h1>
+    
+        <tr>
+        <form id="sendId" action="email">
+            <table>
+                <tr>
+                    <td>Sender name</td>
+                    <td><input type="text" id="from" maxlength="24"></td>
+                </tr>
+                <tr>
+                    <td>To email<td>
+                    <input type="text" id="to" maxlength="24"></td>
+                </tr>
+                <tr>
+                    <td>CC email</td>
+                    <td><input type="text" id="cc" maxlength="24"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Message (not req)</td>
+                    <td><input type="text" id="msg" maxlength="80"
+                               style="width:600;"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" style="height:30px;width:140px;"
+                        onclick="sendMail(); return false" value=" Send chart "></td>
+                </tr>
+            </table>
+        </form>
+        </tr>
+    
+</body>
+</html>

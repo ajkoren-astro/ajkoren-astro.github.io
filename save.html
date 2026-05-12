@@ -1,0 +1,61 @@
+
+<html>
+<head>
+    <title>Save</title>
+    <link rel="stylesheet" type="text/css" href="dropdown.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //$('#chartName').val($.cookie('chartName'));
+            $('#chartName').val(chartName);
+        })
+    </script>
+</head>
+<body>
+    <form action="save" method="post">
+    <table>
+        <tr>
+            <td colspan="1">
+            <button class="home" id="homeId" 
+                    style="width: 160" onclick="location.href='index.html'; return false">Home</button></td>
+            <td colspan="3"><h1><center id="pageHeaderId">Save </center></h1></td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td><div class="dropdown">
+                <button onclick="dropdownClicked()" class="dropbtn" id="ddMenuId" 
+                    style="width: 160">Menu</button>
+                <div id="menuId" class="dropdown-content">
+                    <a id="menuChartListId" href="list.html">Chart List</a>
+                    <a id="menuChartListId" href="select2.html">Match partners</a>
+                </div>
+            </div></td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+
+            <td>Person / event Name &nbsp;</td>
+            <td><input type="text" name="chartName" id="chartName"></td>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td colspan="4">
+                <input type="radio" name="chartType" value="male">Male
+                <input type="radio" name="chartType" value="female" checked>Female
+                <input type="radio" name="chartType" value="composite">Composite
+                <input type="radio" name="chartType" value="event">Event
+            </td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td colspan="4">
+                <center>
+                    <input type="submit" value="Submit" style="height:30px;width:140px;">
+                </center>
+            </td>
+        </tr>
+        </table>
+    </form>
+</body>
+</html>

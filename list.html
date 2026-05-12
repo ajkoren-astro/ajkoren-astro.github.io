@@ -1,0 +1,105 @@
+
+<html>
+<head>
+    <title>List</title>
+    <link rel="stylesheet" type="text/css" href="dropdown.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+			initDB();
+		});
+    </script>
+		
+			
+<!--                
+                $.getJSON("/list", function(data) {
+                    $.each(data, function(key, val) {
+                        var chartId = val.chart_id;
+                        var chartName = val.chart_name;
+                        var lat = val.latitude;
+                        var long = val.longitude;
+                        var utc = val.utc_datetime;
+                        var tz = val.tz;
+                        
+                        var longName = chartName + ", " + utc + " (UTC" + tz + ")";
+                        
+                        var viewUrl = "/view.html?chartName=" + chartName + 
+                            "&lat=" + lat + "&long=" + long +
+                            "&utc=" + utc + "&tz=" + tz;
+                        var viewLink = "View " + chartName + ", " + utc + 
+                            " (UTC" + tz + ")";
+                        //var viewHtml = "<a href='" + viewUrl +"'>" + viewLink + "</a>";
+                        var viewHtml = "<a href='" + viewUrl +"'>View</a>";
+                        
+                        var editUrl = "/?chartName=" + chartName + 
+                            "&lat=" + lat + "&long=" + long +
+                            "&utc=" + utc + "&tz=" + tz;
+                        var editLink = "Edit " + chartName;
+                        //var editHtml = "<a href='" + editUrl +"'>" + editLink + "</a>";
+                        var editHtml = "<a href='" + editUrl +"'>Edit</a>";
+                         
+                        var deleteUrl = "/delete?chartId=" + chartId + "&chartName=" + chartName;
+                        var deleteLink = "Delete " + chartName;
+                        var deleteHtml = "<a href='" + deleteUrl + 
+                        //    "' onclick='deleteClicked(this)'>" + deleteLink + "</a>";
+                            "' onclick='deleteClicked(this)'>Delete</a>";
+//                        var deleteHtml = "<form action='" + deleteUrl + "'>" +  
+//                            "<input type='submit' value='" + deleteLink + 
+//                            "' onclick='deleteClicked(this)'></form>";
+                         
+                        $('#headerId > tbody:last-child').append("<tr>" +
+                            "<td>" + longName + "</td>" +
+                            "<td>" + viewHtml + "</td>" +
+                            "<td>" + editHtml + "</td>" +
+                            "<td>" + deleteHtml + "</td>" +
+                            "</tr>");
+                    });
+                });
+            } else {
+                $('#headerId > tbody:last-child').append(
+                    "<tr><td>Please login in order to list your charts</td></tr>");
+            }
+            
+        });
+        
+        function deleteClicked(obj) {
+            var sure = window.confirm("Are you sure you want to " + obj.innerText);
+            if (sure) {
+                return true;
+            } else {
+                obj.href = window.location;
+                return false;
+            }
+        }
+        
+-->
+</head>
+<body>
+    <table id="headerId">
+        <tbody>
+            <tr>
+                <td>
+                <button class="home" id="homeId" 
+                        style="width: 160" onclick="location.href='index.html'">Home</button></td>
+                <td  style="width: 400"><center><h1>List</h1></center></td>
+                <td><div class="dropdown">
+                    <button onclick="dropdownClicked()" class="dropbtn" id="ddMenuId" 
+                        style="width: 160">Menu</button>
+                    <div id="menuId" class="dropdown-content">
+                        <a id="menuChartListId" href="select2.html">Match partners</a>
+                    </div>
+                </div></td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+        </tbody>
+    </table>
+	
+	<div id="tableDiv"></div>
+</body>
+</html>
