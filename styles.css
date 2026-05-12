@@ -1,0 +1,116 @@
+
+
+html {
+    padding: 0;
+    margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+canvas {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    background: white;
+}
+
+table {
+	table-layout:fixed;
+}
+
+td {
+    vertical-align: left;
+	padding:0 2px 0 2px;
+	/* padding:0 5px 0 5px; */
+}
+
+input[type=button] {
+    border-style: outset;
+    border-width: 1px;
+    border-color: white;
+}
+
+input[type=button]:active {
+    border-style: inset;
+    border-width: 1px;
+    border-color: white;
+}
+
+input[type=slider]:active {
+    border-style: inset;
+    border-width: 1px;
+    border-color: blue;
+    background-color: DarkGrey;
+    background: DarkGrey;
+    color:#ff0000
+}
+
+.sign {
+	width: 90;
+}
+
+.longitude {
+	width: 70;
+}
+
+textarea {
+    padding: 0;
+    margin: 0;
+    border-style: inset;
+    border-width: 1px;
+    box-sizing: border-box;
+    width: 80;
+    resize: none;
+    height: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea:disabled {
+    background-color: lightgray;
+}
+
+select {
+    width: 100%;
+}
+
+thead tr td {
+    text-align: left;
+}
+
+thead {
+    font-weight: bold;
+    font-size: small;
+}
+
+body {
+    margin: auto;
+    padding: 0;
+    background: lavender;
+}
+/*
+    background: #dcdcdc;
+*/
+
+#map {
+    width: 650px;
+    height: 350px;
+}
+
+#game_div {
+    width: 100px;
+    float: right;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.slider-width
+{
+	-webkit-appearance: none;
+    width: 100%;
+    background-color: DarkGrey;
+    background: 'rgb(255,0,0)';
+    //color:#ff0000;
+}
+

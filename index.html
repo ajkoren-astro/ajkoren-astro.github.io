@@ -1,0 +1,240 @@
+
+
+<html>
+<head>
+    <title>AstroScope</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="dropdown.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/header.js"></script>
+    <script type="text/javascript" src="lib/phaser_2_6_2.min.js"></script>
+    <script type="text/javascript" src="js/lib.js"></script>
+    <script type="text/javascript" src="js/natal.js"></script>
+    <script type="text/javascript" src="js/transitory.js"></script>
+    <script type="text/javascript" src="js/local_planets.js"></script>
+    <script type="text/javascript" src="js/initMap.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="2">
+                <button class="home" id="homeId" 
+                        style="width: 100" onclick="location.href='index.html'">Home</button></td>
+            <!-- 
+			<td colspan="4"><h1><div id="pageHeaderId"></div></h1></td>
+            <td colspan="2" id="nameId"></td>
+			-->
+            <td colspan="4"><h1><center id="pageHeaderId">AstroScope</center></h1></td>
+            <td><span style="padding-left:50px"></td>
+            <td><div class="dropdown">
+                <button onclick="dropdownClicked()" class="dropbtn" id="ddMenuId" 
+                    style="width: 160">Menu</button>
+                    <div id="menuId" class="dropdown-content">
+                        <a id="menuChartListId" href="list.html">Chart List</a>
+                        <a id="menuMatchPartnersId" href="select2.html">Match Partners</a>
+                    </div>
+                </div></td>
+        </tr>
+
+        <tr><td colspan="2"></td>
+			<td colspan="4"><h3><center><textarea disabled id='subTitleId'></textarea></center></h3></td>
+		</tr>
+
+        <tr><td>&nbsp;</td></tr>
+		<tr>
+            <td>Local date+time</td>
+            <td><textarea style="width:125" id='ltcNowId'>2016-03-25 16:20</textarea></td>
+            <td>UTC date&amp;time</td>
+            <td><textarea style="width:125" id='utcNowId'>2016-03-25 21:20</textarea></td>
+<!--
+            <td><input type='button' id='getDateTimeId' 
+                       value='Update date + time'></td>
+-->
+            <td><input type='submit' id='getDateTimeId' style="width:140px"
+                       value='Set date&time to now'></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Longitude</td>
+            <td><textarea id='cityLong' rows='1' disabled>-93.25</textarea></td>
+            <td>TZ</td>
+            <td><textarea id='utcDiff' rows='1'>-5</textarea></td>
+            <td><input type='submit' id="planetUpdateId" style="width:140px"
+                onclick="updateChartClicked(
+                    $('#cityLat').val(), 
+                    $('#cityLong').val(),
+                    $('#utcNowId').val())" 
+                value='Draw Natal Chart'></td>
+        </tr>
+        <tr>
+            <td>Latitude</td>
+            <td><textarea id='cityLat' rows='1' disabled>45.00</textarea></td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+    </table>
+    
+    <table width="80%">
+        <tr>
+            <td width="85%">
+            <div style="width:100%" id="map"></div>
+            <p></p>
+            <script 
+                src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=places&key=AIzaSyBcAnHbaifGL94qtQhUUMG_8MeJXt5FPG4" async defer>
+            </script>
+            </td>
+
+            <td width="15%" style="font-weight:bold;">
+                Please use the mouse to move the dot on the map
+                to the desired location</td>
+        </tr>
+    </table>
+
+	<p>
+
+    <table>
+		<thead>
+            <tr>
+                <td>Planet</td>
+                <td>Long</td>
+                <td>Zodiac&nbsp;sign&nbsp;</td>
+            </tr>
+		</thead>
+        <tr>
+            <td id="sunTdId">Sun</td>
+            <td><textarea class="longitude" id="sunLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="sunSignId" disabled='disabled'></textarea></td>
+            <td rowspan="20">
+                <div id="game_div">
+                <!--<img src="./img/zodiac-f.gif" />-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Mercury</td>
+            <td><textarea class="longitude" id="mercuryLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="mercurySignId" disabled='disabled'></textarea></td>
+       </tr>
+        <tr>
+            <td>Venus</td>
+            <td><textarea class="longitude" id="venusLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="venusSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Moon</td>
+            <td><textarea class="longitude" id="moonLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="moonSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Mars</td>
+            <td><textarea class="longitude" id="marsLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="marsSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Jupiter</td>
+            <td><textarea class="longitude" id="jupiterLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="jupiterSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Saturn</td>
+            <td><textarea class="longitude" id="saturnLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="saturnSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Uranus</td>
+            <td><textarea class="longitude" id="uranusLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="uranusSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Neptune</td>
+            <td><textarea class="longitude" id="neptuneLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="neptuneSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>Pluto</td>
+            <td><textarea class="longitude" id="plutoLong30Id" disabled='disabled'></textarea></td>
+            <td><textarea class="sign" id="plutoSignId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>AC</td>
+            <td><textarea class="longitude" id="acLong30Id" disabled='disabled'></textarea></td>
+            <!--<td><textarea id="acSignId" disabled='disabled'></textarea></td>-->
+            <td><textarea class="sign" id="acLongId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td>MC</td>
+            <td><textarea class="longitude" id="mcLong30Id" disabled='disabled'></textarea></td>
+            <!--<td><textarea id="mcSignId" disabled='disabled'></textarea></td>-->
+            <td><textarea class="sign" id="mcLongId" disabled='disabled'></textarea></td>
+        </tr>
+        <tr>
+            <td><center>&nbsp;</center></td>
+            <td><center>&nbsp;</center></td>
+            <td><center>&nbsp;</center></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <form id="transitsId" action="transits.html">
+                    <input type="hidden" name="lat">
+                    <input type="hidden" name="long" value="$('#cityLong').val()">
+                    <input type="hidden" name="utc"
+                           value="$('#utcNowId').val()">
+                    <center><input type="submit" style="height:30px;width:140px;"
+                           value="Show Transits"></center>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <form id="progressionsId" action="progressions.html">
+                    <input type="hidden" name="lat">
+                    <input type="hidden" name="long" value="$('#cityLong').val()">
+                    <input type="hidden" name="utc"
+                           value="$('#utcNowId').val()">
+                    <center><input type="submit" style="height:30px;width:140px;"
+                           value=" Show Progressions "></center>
+                </form>
+            </td>
+       </tr>
+        <tr>
+            <td colspan="3">
+                <form id="saveId" action="list.html">
+					<input type="hidden" name="lat">
+                    <input type="hidden" name="long" value="$('#cityLong').val()">
+                    <input type="hidden" name="utc"
+                           value="$('#utcNowId').val()">
+                    <center><input type="submit" style="height:30px;width:140px;"
+                           value=" Save chart "></center>
+                </form>
+            </td>
+       </tr>
+        <tr>
+            <td colspan="3">
+                <form id="sendId" action="send.html">
+                    <input type="hidden" name="lat">
+                    <input type="hidden" name="long">
+                    <input type="hidden" name="utc"
+                           value="$('#utcNowId').val()">
+                    <center><input type="submit" style="height:30px;width:140px;"
+                           value=" Send chart "></center>
+                </form>
+            </td>
+       </tr>
+        <tr>
+            <td colspan="3">
+                <form id="printId" action="print.html">
+                    <input type="hidden" name="lat">
+                    <input type="hidden" name="long">
+                    <input type="hidden" name="utc"
+                           value="$('#utcNowId').val()">
+                    <center><input type="submit" style="height:30px;width:140px;"
+                           value=" Print chart "></center>
+                </form>
+            </td>
+       </tr>
+    </table>
+	<br><br><br>
+
+</body>
+</html>
